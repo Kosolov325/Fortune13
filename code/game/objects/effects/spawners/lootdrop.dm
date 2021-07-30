@@ -40,7 +40,7 @@
 				/obj/item/bedsheet/red = 8, /obj/item/bedsheet/yellow = 8, /obj/item/bedsheet/brown = 8,
 				/obj/item/bedsheet/black = 8, /obj/item/bedsheet/patriot = 3, /obj/item/bedsheet/rainbow = 3,
 				/obj/item/bedsheet/ian = 3, /obj/item/bedsheet/runtime = 3, /obj/item/bedsheet/nanotrasen = 3,
-				/obj/item/bedsheet/pirate = 1, /obj/item/bedsheet/cosmos = 1, /obj/item/bedsheet/gondola = 1
+				/obj/item/bedsheet/pirate = 1, /obj/item/bedsheet/gondola = 1
 				)
 
 /obj/effect/spawner/lootdrop/armory_contraband
@@ -477,7 +477,7 @@
 		/obj/item/storage/box/dice = 5,
 		/obj/item/toy/cards/deck = 5,
 		/obj/effect/spawner/lootdrop/druggie_pill/no_turf = 5,
-		/obj/item/melee/onehanded/knife/kitchen = 5,
+		/obj/item/kitchen/knife = 5,
 		/obj/item/screwdriver = 5,
 		/obj/item/crowbar/red = 1, //Dont you need a crowbar to open this?
 		/obj/item/stack/medical/suture = 3,

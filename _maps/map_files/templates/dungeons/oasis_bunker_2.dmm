@@ -1728,7 +1728,6 @@
 /area/f13/bunker)
 "EW" = (
 /obj/structure/bed/pod,
-/obj/item/bedsheet/cosmos,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -2623,7 +2622,8 @@
 "Vt" = (
 /obj/structure/simple_door/bunker,
 /obj/machinery/door/poddoor{
-	id = 69
+	id = 69;
+	max_integrity = 999999
 	},
 /turf/open/floor/plating/tunnel,
 /area/f13/bunker)

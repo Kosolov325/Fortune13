@@ -72,7 +72,7 @@
 //close incision
 /datum/surgery_step/close
 	name = "mend incision"
-	implements = list(TOOL_CAUTERY = 100, /obj/item/gun/energy/laser = 90, TOOL_WELDER = 70,
+	implements = list(TOOL_CAUTERY = 100, /obj/item/gun/energy/laser = 90, TOOL_WELDER = 80,
 		/obj/item = 30) // 30% success with any hot item.
 	time = 24
 
@@ -97,7 +97,7 @@
 //saw bone
 /datum/surgery_step/saw
 	name = "saw bone"
-	implements = list(TOOL_SAW = 100, /obj/item/melee/arm_blade = 75, /obj/item/twohanded/fireaxe = 50, /obj/item/hatchet = 35, /obj/item/melee/onehanded/knife/butcher = 25)
+	implements = list(TOOL_SAW = 100, /obj/item/melee/arm_blade = 75, /obj/item/twohanded/fireaxe = 50, /obj/item/hatchet = 35, /obj/item/kitchen/knife/butcher = 25)
 	time = 54
 
 /datum/surgery_step/saw/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)

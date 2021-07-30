@@ -1,9 +1,10 @@
 /////////////////
 // POWER FISTS //
-/////////////////		-Knockback
+/////////////////		-Uses power (gas currently) for knockback. Heavy AP, specialized for attacking heavy armor
 
+// Power Fist			Keywords: Damage max 42, AP 0.5
 /obj/item/melee/powerfist
-	name = "powerfist"
+	name = "power fist"
 	desc = "A metal gauntlet with a piston-powered ram on top for that extra 'oomph' in your punch."
 	icon_state = "powerfist"
 	item_state = "powerfist"
@@ -12,25 +13,28 @@
 	flags_1 = CONDUCT_1
 	attack_verb = list("whacked", "fisted", "power-punched")
 	force = 25
-	armour_penetration = 0.7
+	armour_penetration = 0.5
 	throwforce = 10
 	throw_range = 3
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_GLOVES
 	var/transfer_prints = TRUE //prevents runtimes with forensics when held in glove slot
 
-/obj/item/melee/powerfist/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/knockback, 1, FALSE, TRUE)
 
-/obj/item/melee/powerfist/goliath //Placeholder for now, just straight powerfist copy with tiny AP increase. Maybe fine?
+// Goliath				Keywords: Damage max 42, AP 0.55
+/obj/item/melee/powerfist/goliath
 	name = "Goliath"
 	desc = "Armored gauntlet with a piston-powered ram, this one is a experimental one captured and named by the Legion."
+	icon = 'icons/fallout/objects/melee/melee.dmi'
+	lefthand_file = 'icons/fallout/onmob/weapons/melee1h_lefthand.dmi'
+	righthand_file = 'icons/fallout/onmob/weapons/melee1h_righthand.dmi'
 	icon_state = "goliath"
 	item_state = "goliath"
-	armour_penetration = 0.75
+	armour_penetration = 0.55
 
-/obj/item/gun/ballistic/revolver/ballisticfist //it's a double-barrel shotgun disguised as a fist shhh
+
+// Ballistic Fist			Keywords: Damage max 42, AP 0.45, Shotgun
+/obj/item/gun/ballistic/revolver/ballisticfist
 	name = "ballistic fist"
 	desc = "This powerfist has been modified to have two shotgun barrels welded to it, with the trigger integrated into the knuckle guard. For those times when you want to punch someone and shoot them in the face at the same time."
 	icon = 'icons/obj/items_and_weapons.dmi'
@@ -39,17 +43,17 @@
 	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
 	force = 30
-	armour_penetration = 0.7
+	armour_penetration = 0.45
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/dual
 	fire_sound = 'sound/f13weapons/caravan_shotgun.ogg'
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_GLOVES
 	w_class = WEIGHT_CLASS_NORMAL
 	item_flags = NEEDS_PERMIT //doesn't slow you down
 	fire_delay = 0
-//	distro = 1
 	var/transfer_prints = TRUE //prevents runtimes with forensics when held in glove slot
 
 
+// Mole Miner				Keywords: Damage max 42, AP 0.4, Mining
 /obj/item/melee/powerfist/moleminer
 	name = "mole miner gauntlet"
 	desc = "A hand-held mining and cutting implement, repurposed into a deadly melee weapon.  Its name origins are a mystery..."
@@ -59,7 +63,7 @@
 	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
 	flags_1 = CONDUCT_1
 	force = 40
-	armour_penetration = 0.5
+	armour_penetration = 0.4
 	throwforce = 10
 	throw_range = 7
 	attack_verb = list("slashed", "sliced", "torn", "ripped", "diced", "cut")
@@ -77,70 +81,64 @@
 // ADVANCED SWORDS //
 /////////////////////
 
-
-// Ripper							Keywords: Damage 10/45, Wound bonus, block		
+// Ripper				Keywords: Damage 10/45, Wound bonus, block		
 /obj/item/melee/powered/ripper
 	name = "ripper"
 	desc = "The Ripper™ vibroblade is powered by a small energy cell wich allows it to easily cut through flesh and bone."
 	icon = 'icons/fallout/objects/melee/melee.dmi'
 	icon_state = "ripper"
-	var/on_icon_state = "ripper_on"
-	var/off_icon_state = "ripper"
 	lefthand_file = 'icons/fallout/onmob/weapons/melee1h_lefthand.dmi'
 	righthand_file = 'icons/fallout/onmob/weapons/melee1h_righthand.dmi'
-	var/on_item_state = "ripper_on"
-	var/off_item_state = "ripper"
-	w_class = WEIGHT_CLASS_BULKY
-	var/weight_class_on = WEIGHT_CLASS_HUGE
+	w_class = WEIGHT_CLASS_NORMAL
 	total_mass = TOTAL_MASS_MEDIEVAL_WEAPON
 	slot_flags = ITEM_SLOT_SUITSTORE | ITEM_SLOT_BELT
 	force = 10
-	var/force_on = 45
-	var/force_off = 10
 	wound_bonus = 25
 	block_chance = 15
 	throw_speed = 3
 	throw_range = 4
 	throwforce = 10
-	var/on = FALSE
 	tool_behaviour = TOOL_SAW
 	sharpness = SHARP_EDGED
-	toolspeed = 1.5 //slower than a real saw
+	toolspeed = 1.5
 	resistance_flags = FIRE_PROOF
 	hitsound = 'sound/weapons/chainsawhit.ogg'
+	var/on_item_state = "ripper_on"
+	var/off_item_state = "ripper"
+	var/weight_class_on = WEIGHT_CLASS_HUGE
+	var/force_on = 45
+	var/force_off = 10
+	var/on = FALSE
+	var/on_icon_state = "ripper_on"
+	var/off_icon_state = "ripper"
 	var/on_sound = 'sound/weapons/chainsawhit.ogg'
-
-// Description for when turning the ripper on
-/obj/item/melee/powered/ripper/proc/get_on_description()
-	. = list()
-	.["local_on"] = "<span class ='warning'>You thumb the on button, the whining, blurry edge of the Ripper now lethal to touch.</span>"
-	.["local_off"] = "<span class ='notice'>You turn off the Ripper, the buzz of the cutting teeth ceasing.</span>"
-	return
+	var/description_on = "<span class ='warning'>You thumb the on button, the whining, blurry edge of the Ripper now lethal to touch.</span>"
+	var/description_off = "<span class ='notice'>You turn off the Ripper, the buzz of the cutting teeth ceasing.</span>"
 
 /obj/item/melee/powered/ripper/attack_self(mob/user)
 	on = !on
-	var/list/desc = get_on_description()
+	to_chat(user, description_on)
 	if(on)
-		to_chat(user, desc["local_on"])
+		to_chat(user, description_on)
 		icon_state = on_icon_state
 		item_state = on_item_state
 		w_class = weight_class_on
 		force = force_on
 		slot_flags = null
 		attack_verb = list("sawed", "torn", "cut", "chopped", "diced")
-		playsound(src.loc, on_sound, 50, 1)
+		playsound(loc, on_sound, 50, TRUE)
 	else
-		to_chat(user, desc["local_off"])
+		to_chat(user, description_off)
 		icon_state = off_icon_state
 		item_state = off_item_state
-		w_class = WEIGHT_CLASS_BULKY
+		w_class = WEIGHT_CLASS_NORMAL
 		force = force_off
 		slot_flags = ITEM_SLOT_SUITSTORE | ITEM_SLOT_BELT
 		attack_verb = list("poked", "scraped")
 	add_fingerprint(user)
 
 
-//Warhammer chainsword				Keywords: Damage 10/50, Wound bonus, Block, Bonus AP + 0.15
+//Warhammer chainsword			Keywords: Damage 10/50, Wound bonus, Block, Bonus AP + 0.15
 /obj/item/melee/powered/ripper/prewar
 	name = "pre-war military ripper"
 	desc = "A hand-held, militarized chainsaw, popular with Army units requiring a compact engineering tool for cutting. Just what material is intended to be cut with the weapon remains open to debate."
@@ -151,65 +149,6 @@
 	off_item_state = "prewarrip_off"
 	force_on = 50
 	armour_penetration = 0.15
-
-// Chainsaw							Keywords: Damage 13/57, Wound bonus
-/obj/item/twohanded/chainsaw
-	name = "chainsaw"
-	desc = "A versatile power tool. Useful for limbing trees and delimbing humans."
-	icon_state = "chainsaw_off"
-	lefthand_file = 'icons/mob/inhands/weapons/chainsaw_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/chainsaw_righthand.dmi'
-	flags_1 = CONDUCT_1
-	force = 13
-	var/force_on = 57
-	w_class = WEIGHT_CLASS_HUGE
-	throwforce = 10
-	throw_speed = 2
-	throw_range = 2
-	wound_bonus = 25
-//	custom_materials = list(MAT_METAL=13000)
-	attack_verb = list("sawn", "torn", "carved", "chopped", "ripped")
-	hitsound = "swing_hit"
-	sharpness = SHARP_EDGED
-	actions_types = list(/datum/action/item_action/startchainsaw)
-	tool_behaviour = TOOL_SAW
-	toolspeed = 0.5
-	var/on = FALSE
-
-/obj/item/twohanded/chainsaw/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/butchering, 30, 100, 0, 'sound/weapons/chainsawhit.ogg', TRUE)
-	AddComponent(/datum/component/two_handed, require_twohands=TRUE)
-	AddElement(/datum/element/update_icon_updates_onmob)
-
-/obj/item/twohanded/chainsaw/suicide_act(mob/living/carbon/user)
-	if(on)
-		user.visible_message("<span class='suicide'>[user] begins to tear [user.p_their()] head off with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-		playsound(src, 'sound/weapons/chainsawhit.ogg', 100, 1)
-		var/obj/item/bodypart/head/myhead = user.get_bodypart(BODY_ZONE_HEAD)
-		if(myhead)
-			myhead.dismember()
-	else
-		user.visible_message("<span class='suicide'>[user] smashes [src] into [user.p_their()] neck, destroying [user.p_their()] esophagus! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-		playsound(src, 'sound/weapons/genhit1.ogg', 100, 1)
-	return(BRUTELOSS)
-
-/obj/item/twohanded/chainsaw/attack_self(mob/user)
-	on = !on
-	to_chat(user, "As you pull the starting cord dangling from [src], [on ? "it begins to whirr." : "the chain stops moving."]")
-	force = on ? force_on : initial(force)
-	throwforce = on ? force_on : force
-	update_icon()
-	var/datum/component/butchering/butchering = src.GetComponent(/datum/component/butchering)
-	butchering.butchering_enabled = on
-
-	if(on)
-		hitsound = 'sound/weapons/chainsawhit.ogg'
-	else
-		hitsound = "swing_hit"
-
-/obj/item/twohanded/chainsaw/update_icon_state()
-	icon_state = "chainsaw_[on ? "on" : "off"]"
 
 
 // Shishkebab backpack				The shishkebab weapon base unit
@@ -305,7 +244,7 @@
 	..()
 	remove_sword()
 
-// Shishkebab sword				Keywords: Damage 55 (fire), Welder	
+// Shishkebab sword				Keywords: Damage 55 (fire), Tool welder	
 /obj/item/weapon/melee/shishkebab //This should never exist without the backpack.
 	name = "shishkebab"
 	desc = "A deadly flaming sword covered in fuel. You're not sure this is entirely safe."
@@ -339,39 +278,3 @@
 			to_chat(tank.loc, "<span class='notice'>The shishkebab slides back into the backpack tank.</span>")
 		destination = tank
 	..()
-
-/obj/item/mounted_chainsaw
-	name = "mounted chainsaw"
-	desc = "A chainsaw that has replaced your arm."
-	icon_state = "chainsaw_on"
-	item_state = "mounted_chainsaw"
-	lefthand_file = 'icons/mob/inhands/weapons/chainsaw_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/chainsaw_righthand.dmi'
-	item_flags = ABSTRACT | DROPDEL
-	w_class = WEIGHT_CLASS_BULKY
-	force = 56
-	throwforce = 0
-	throw_range = 0
-	throw_speed = 0
-	sharpness = SHARP_EDGED
-	attack_verb = list("sawed", "torn", "cut", "chopped", "diced")
-	hitsound = 'sound/weapons/chainsawhit.ogg'
-	total_mass = TOTAL_MASS_HAND_REPLACEMENT
-	tool_behaviour = TOOL_SAW
-	toolspeed = 1
-
-/obj/item/mounted_chainsaw/Initialize()
-	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
-
-/obj/item/mounted_chainsaw/Destroy()
-	var/obj/item/bodypart/part
-	new /obj/item/twohanded/chainsaw(get_turf(src))
-	if(iscarbon(loc))
-		var/mob/living/carbon/holder = loc
-		var/index = holder.get_held_index_of_item(src)
-		if(index)
-			part = holder.hand_bodyparts[index]
-	. = ..()
-	if(part)
-		part.drop_limb()

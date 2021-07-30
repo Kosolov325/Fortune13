@@ -269,9 +269,19 @@ Great Khan
 	minimal_access = list(ACCESS_KHAN)
 
 	loadout_options = list(
-	///datum/outfit/loadout/pusher,
-	/datum/outfit/loadout/enforcer,
-	/datum/outfit/loadout/brawler)
+		/datum/outfit/loadout/enforcer,
+		/datum/outfit/loadout/brawler,
+		)
+	matchmaking_allowed = list(
+		/datum/matchmaking_pref/friend = list(
+			/datum/job/wasteland/f13raider,
+			/datum/job/wasteland/f13pusher,
+		),
+		/datum/matchmaking_pref/rival = list(
+			/datum/job/wasteland/f13raider,
+			/datum/job/wasteland/f13pusher,
+		),
+	)
 
 /datum/outfit/job/wasteland/f13pusher
 	name = "Great Khan"
@@ -353,6 +363,26 @@ Raider
 
 	access = list()
 	minimal_access = list()
+	matchmaking_allowed = list(
+		/datum/matchmaking_pref/friend = list(
+			/datum/job/wasteland/f13pusher,
+		),
+		/datum/matchmaking_pref/rival = list(
+			/datum/job/wasteland/f13pusher,
+		),
+		/datum/matchmaking_pref/patron = list(
+			/datum/job/wasteland/f13raider,
+		),
+		/datum/matchmaking_pref/protegee = list(
+			/datum/job/wasteland/f13raider,
+		),
+		/datum/matchmaking_pref/outlaw = list(
+			/datum/job/wasteland/f13raider,
+		),
+		/datum/matchmaking_pref/bounty_hunter = list(
+			/datum/job/wasteland/f13raider,
+		),
+	)
 	loadout_options = list(
 	/datum/outfit/loadout/raider_supafly,
 	/datum/outfit/loadout/raider_yankee,
@@ -366,7 +396,6 @@ Raider
 	/datum/outfit/loadout/raider_ncr,
 	/datum/outfit/loadout/raider_legion,
 	/datum/outfit/loadout/raider_tribal,
-	/datum/outfit/loadout/raider_enclave
 	)
 
 
@@ -476,7 +505,7 @@ Raider
 		/obj/item/gun/ballistic/revolver/single_shotgun=1,
 		/obj/item/ammo_box/shotgun/bean,
 		/obj/item/melee/onehanded/knife/butcher = 1,
-		/obj/item/grenade/iedcasing = 6,
+		/obj/item/grenade/homemade/firebomb = 6,
 		)
 
 /datum/outfit/loadout/raider_sadist
@@ -575,17 +604,6 @@ Raider
 		/obj/item/melee/onehanded/knife/bone = 1,
 		)
 
-/datum/outfit/loadout/raider_enclave
-	name = "Enclave Remnant"
-	r_hand = /obj/item/storage/backpack/satchel/enclave
-	suit = /obj/item/clothing/suit/armor/f13/battlecoat/tan/armored // Tier 4 armor
-	uniform = /obj/item/clothing/under/f13/exile/enclave
-	shoes = /obj/item/clothing/shoes/f13/enclave/serviceboots
-	id = /obj/item/card/id/rusted/brokenholodog/enclave
-	backpack_contents = list(
-		/obj/item/gun/ballistic/automatic/pistol/m1911/compact=1,
-		/obj/item/ammo_box/magazine/m45=2)
-
 
 /datum/job/wasteland/f13wastelander
 	title = "Wastelander"
@@ -601,6 +619,30 @@ Raider
 
 	access = list()		//we can expand on this and make alterations as people suggest different loadouts
 	minimal_access = list()
+	matchmaking_allowed = list(
+		/datum/matchmaking_pref/friend = list(
+			/datum/job/wasteland/f13wastelander,
+			/datum/job/wasteland/f13detective,
+		),
+		/datum/matchmaking_pref/rival = list(
+			/datum/job/wasteland/f13wastelander,
+			/datum/job/wasteland/f13detective,
+		),
+		/datum/matchmaking_pref/mentor = list(
+			/datum/job/wasteland/f13wastelander,
+		),
+		/datum/matchmaking_pref/disciple = list(
+			/datum/job/wasteland/f13wastelander,
+			/datum/job/wasteland/f13detective,
+		),
+		/datum/matchmaking_pref/patron = list(
+			/datum/job/wasteland/f13wastelander,
+			/datum/job/wasteland/f13mobboss,
+		),
+		/datum/matchmaking_pref/protegee = list(
+			/datum/job/wasteland/f13wastelander,
+		),
+	)
 	loadout_options = list(
 	/datum/outfit/loadout/vault_refugee,
 	/datum/outfit/loadout/salvager,
@@ -619,7 +661,7 @@ Raider
 	ears = null
 	belt = null
 	r_hand = /obj/item/book/granter/trait/selection
-	l_pocket = /obj/item/reagent_containers/food/drinks/flask
+	l_pocket = /obj/item/storage/bag/money/small/wastelander
 	r_pocket = /obj/item/flashlight/flare
 	belt = /obj/item/melee/onehanded/knife/survival
 	backpack = /obj/item/storage/backpack/satchel/explorer
@@ -628,7 +670,6 @@ Raider
 		/obj/item/reagent_containers/hypospray/medipen/stimpak,
 		/obj/item/reagent_containers/hypospray/medipen/stimpak,
 		/obj/item/reagent_containers/pill/radx,
-		/obj/item/storage/bag/money/small/wastelander,
 		)
 
 /datum/outfit/job/wasteland/f13wastelander/pre_equip(mob/living/carbon/human/H)
@@ -716,6 +757,7 @@ Raider
 	head = /obj/item/clothing/head/scarecrow_hat
 	gloves = /obj/item/clothing/gloves/color/black
 	glasses = /obj/item/clothing/glasses/welding
+	id = /obj/item/card/id/dogtag/town/legion
 	l_hand = /obj/item/shield/riot/buckler
 	backpack_contents = list(
 		/obj/item/melee/onehanded/machete/spatha = 1,
@@ -727,6 +769,7 @@ Raider
 	shoes = /obj/item/clothing/shoes/f13/tan
 	head = /obj/item/clothing/head/f13/cowboy
 	gloves = /obj/item/clothing/gloves/color/brown
+	id = /obj/item/card/id/dogtag/town/ncr
 	l_hand = /obj/item/gun/ballistic/rifle/mag/varmint
 	backpack_contents = list(
 		/obj/item/ammo_box/magazine/m556/rifle=2)
@@ -762,11 +805,10 @@ Raider
 	minimal_access = list(ACCESS_DEN)
 
 	loadout_options = list(
-							/datum/outfit/loadout/mrwhite,
-							/datum/outfit/loadout/hitman,
-							/datum/outfit/loadout/bodyguard)
-
-
+		/datum/outfit/loadout/mrwhite,
+		/datum/outfit/loadout/hitman,
+		/datum/outfit/loadout/bodyguard,
+		)
 
 
 /datum/outfit/job/wasteland/f13enforcer
@@ -854,6 +896,17 @@ Raider
 
 	access = list(ACCESS_DEN)
 	minimal_access = list(ACCESS_DEN)
+	matchmaking_allowed = list(
+		/datum/matchmaking_pref/rival = list(
+			/datum/job/oasis/f13mayor,
+			/datum/job/oasis/f13sheriff,
+			/datum/job/wasteland/f13detective,
+		),
+		/datum/matchmaking_pref/patron = list(
+			/datum/job/wasteland/f13wastelander,
+		),
+	)
+
 
 /datum/outfit/job/wasteland/f13mobboss
 	name = "Den Mob Boss"

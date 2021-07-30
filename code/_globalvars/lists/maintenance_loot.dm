@@ -193,7 +193,7 @@ GLOBAL_LIST_INIT(trash_ammo, list(
 	/obj/item/ammo_box/magazine/m10mm_adv/simple = 3,
 	/obj/item/ammo_box/magazine/m9mm = 3,
 	/obj/item/ammo_casing/shotgun/buckshot = 3,
-	/obj/item/ammo_box/c45rev = 3,
+	/obj/item/ammo_box/c38 = 3,
 	/datum/design/ammolathe/a22plink
 ))
 
@@ -262,7 +262,7 @@ GLOBAL_LIST_INIT(trash_misc, list(
 	/obj/item/pipe = 5,
 	/obj/item/trash/f13/electronic/toaster = 5,
 	/obj/item/reagent_containers/glass/bucket = 5,
-	/obj/item/melee/onehanded/knife/kitchen = 5,
+	/obj/item/kitchen/knife = 5,
 	/obj/item/kitchen/fork = 5,
 	/obj/item/storage/bag/tray = 5,
 	/obj/item/reagent_containers/glass/bowl = 5,
@@ -335,7 +335,9 @@ GLOBAL_LIST_INIT(loot_prewar_costume, list(
 	/obj/item/clothing/neck/cloak/grey,
 	/obj/item/clothing/under/kilt,
 	/obj/item/clothing/under/pirate,
-	/obj/item/clothing/suit/pirate
+	/obj/item/clothing/suit/pirate,
+	/obj/item/clothing/under/costume/cheongsam,
+	/obj/item/clothing/under/costume/qipao/red,
 ))
 
 GLOBAL_LIST_INIT(loot_t1_armor, list(
@@ -445,7 +447,7 @@ GLOBAL_LIST_INIT(loot_t1_melee, list(
 	/obj/item/hatchet,
 	/obj/item/pickaxe/mini,
 	/obj/item/wrench,
-	/obj/item/melee/onehanded/knife/kitchen,
+	/obj/item/kitchen/knife,
 	/obj/item/kitchen/rollingpin,
 ))
 
@@ -472,7 +474,7 @@ GLOBAL_LIST_INIT(loot_t3_melee, list(
 	/obj/item/weldingtool,
 	/obj/item/twohanded/spear,
 	/obj/item/twohanded/baseball,
-	/obj/item/melee/onehanded/knife/butcher,
+	/obj/item/kitchen/knife/butcher,
 	/obj/item/melee/onehanded/machete,
 	/obj/item/melee/onehanded/machete/forgedmachete,
 	/obj/item/shield/riot/buckler,
